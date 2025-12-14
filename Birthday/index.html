@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>هدية عيد ميلاد</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* مربع الإدخال */
+#unlock {
+  text-align: center;
+  z-index: 2;
+}
+
+#content {
+  display: none;
+  background: rgba(0,0,0,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* فوق التاريخ */
+#topText {
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* التاريخ */
+h1 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* الرسالة */
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* "Happy Birthday" بين قلبين */
+#birthday {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* الإدخال والزر */
+input {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  padding: 12px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+/* الفيديو */
+video {
+  margin-top: 25px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* قلوب صغيرة بيضاء */
+.heart {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255,255,255,0.8);
+  transform: rotate(45deg);
+  animation: floatUp linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+}
+
+.heart::before { top: -5px; left: 0; }
+.heart::after { left: 5px; top: 0; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(45deg); opacity:1; }
+  100% { transform: translateY(-600px) rotate(45deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- مربع الرمز فقط -->
+<div id="unlock">
+  <input type="password" id="code" placeholder="•••••">
+  <br>
+  <button onclick="unlock()">↳</button>
+</div>
+
+<!-- المحتوى بعد الرمز -->
+<div id="content">
+  <div id="topText">Most Beautiful Girl</div>
+  <h1>🎉 15 DEC 2025 🎉</h1>
+  <p>
+    وجودك بحياتي يخليني أحس بالأمان… حتى لما يزعلني شي، وجودك يهون كل شي.<br>
+    من بين كل الناس ومن بين كل الطرق، أنتِ المكان اللي قلبي يرتاح له.<br>
+    كل سنة وانتي بخير… وكل لحظة جديدة معك أحلى من اللي قبلها. 🤍
+  </p>
+
+  <div id="birthday">❤️ Happy Birthday ❤️</div>
+
+  <video autoplay controls>
+    <source src="THE_ONE_KODALINE.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو
+  </video>
+</div>
+
+<script>
+// فتح المحتوى بعد الرمز
+function unlock() {
+  const code = document.getElementById('code').value.trim();
+  if(code === "THEONE") {
+    document.getElementById('unlock').style.display = "none";
+    document.getElementById('content').style.display = "block";
+  } else {
+    alert("الرمز غير صحيح!");
+  }
+}
+
+// إنشاء قلوب بيضاء صغيرة متحركة
+for(let i=0; i<40; i++){
+  let heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random()*100 + '%';
+  heart.style.top = Math.random()*100 + 'px';
+  heart.style.width = 5 + Math.random()*10 + 'px';
+  heart.style.height = heart.style.width;
+  heart.style.animationDuration = 3 + Math.random()*4 + 's';
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
